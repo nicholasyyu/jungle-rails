@@ -1,0 +1,27 @@
+<% if review.description %>
+<% reviewContent = review.description %>
+<% else %>
+<% reviewContent = "No reviews" %>
+<% end %>
+
+<% if review.rating != nil %>
+<% reviewRating = review.rating %>
+<% else %>
+<% reviewRating = "N/A" %>
+<% end %>
+
+<tr>
+    <td>
+      	<%= reviewContent %>
+    </td>
+
+    <td>
+    	<%= reviewRating %>
+    </td>
+
+    <td>
+		<%= user.first_name  %> 
+		<%= user.last_name  %>
+	</td>
+</tr> 
+

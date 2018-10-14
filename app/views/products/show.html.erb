@@ -28,4 +28,34 @@
 
   </article>
 
+  <section class="admin-categories-index">
+
+    <header class="page-header">
+      <h2>All Reviews</h2>
+    </header>
+
+    <div class="panel panel-default Categories">
+      <table class="table table-bordered">
+
+        <thead>
+          <tr>
+            <th>Review</th>
+            <th>Rating</th>
+            <th>Name</th>
+          </tr>
+          <tr></tr>
+        </thead>
+
+        <tbody>
+          <% @product.reviews.each do |review| %>
+          <% user = @user.find_by(id:review.user_id) %>
+          <%= render partial: "review", locals: { review: review, user: user } %>
+          <% end %>
+        </tbody>
+
+      </table>
+    </div>
+
+  </section>
+
 </section>
