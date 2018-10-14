@@ -21,6 +21,19 @@ end
 
 # Let's do this ...
 
+## User
+
+puts "Creating Users ..."
+
+User.destroy_all
+
+User.create!({
+  first_name: "Nicholas",
+  last_name: "Yu",
+  email: "yuyang327@gmail.com",
+  password_digest: "$2a$10$DX34AgNOixkSl9OsNyjYs.1mVPL9do0F7Dji8UBgYiiluiuPpJWOi"
+})
+
 ## CATEGORIES
 
 puts "Finding or Creating Categories ..."
@@ -59,7 +72,7 @@ cat1.products.create!({
   price: 34.49
 })
 
-cat1.products.create!({
+prod1 = cat1.products.create!({
   name:  'Hipster Socks',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('apparel4.jpg'),
@@ -84,7 +97,7 @@ cat1.products.create!({
 })
 
 
-cat2.products.create!({
+prod2 = cat2.products.create!({
   name:  'Modern Skateboards',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('electronics1.jpg'),
@@ -116,7 +129,7 @@ cat3.products.create!({
   price: 3_052.00
 })
 
-cat3.products.create!({
+prod3 = cat3.products.create!({
   name:  'Electric Chair',
   description: Faker::Hipster.paragraph(4),
   image: open_asset('furniture2.jpg'),
@@ -132,5 +145,34 @@ cat3.products.create!({
   price: 2_483.75
 })
 
+# Reviews
+
+puts "Creating Reviews ..."
+
+Review.destroy_all
+
+prod1.reviews.create!({
+  user_id:  1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 5,
+})
+prod1.reviews.create!({
+  user_id:  1,
+  rating: 3,
+})
+prod1.reviews.create!({
+  user_id:  1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 4,
+})
+prod2.reviews.create!({
+  user_id:  1,
+  description: Faker::Hipster.paragraph(4),
+  rating: 0,
+})
+prod3.reviews.create!({
+  user_id:  1,
+  rating: 1,
+})
 
 puts "DONE!"
