@@ -28,10 +28,16 @@
 
   </article>
 
+  <% if current_user %>
+      <div>
+        <%= render partial: 'reviews/form', locals: { product: @product, review: Review.new } %>
+      </div>
+  <% end %>
+
   <section class="admin-categories-index">
 
     <header class="page-header">
-      <h2>All Reviews</h2>
+      <h3>All Reviews</h3>
     </header>
 
     <div class="panel panel-default Categories">
